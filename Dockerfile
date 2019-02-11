@@ -9,12 +9,12 @@ RUN apt-get update && apt-get install -y \
     git \
     entr 
 
-COPY build_scripts/install_rust.sh /tmp
-RUN su ${user} /tmp/install_rust.sh
+COPY build_scripts/install_deno.sh /tmp
+RUN su ${user} /tmp/install_deno.sh
 
-COPY build_scripts/install_rls.sh /tmp
-RUN su ${user} /tmp/install_rls.sh
-
+###COPY build_scripts/install_rls.sh /tmp
+###RUN su ${user} /tmp/install_rls.sh
+###
 COPY build_scripts/install_neovim.sh /tmp
 RUN su ${user} -c /tmp/install_neovim.sh
 
