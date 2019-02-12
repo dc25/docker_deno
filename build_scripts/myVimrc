@@ -7,12 +7,12 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
-" for reference - from https://github.com/prabirshrestha/vim-lsp
-if executable('rls')
+" from https://github.com/prabirshrestha/vim-lsp
+if executable('javascript-typescript-langserver')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'whitelist': ['rust'],
+        \ 'name': 'javascript-typescript-langserver',
+	\ 'cmd': {server_info->[&shell, &shellcmdflag, 'javascript-typescript-langserver']}, 
+        \ 'whitelist': ['typescript'],
         \ })
 endif
 

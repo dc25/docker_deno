@@ -12,9 +12,15 @@ RUN apt-get update && apt-get install -y \
 COPY build_scripts/install_deno.sh /tmp
 RUN su ${user} /tmp/install_deno.sh
 
-###COPY build_scripts/install_rls.sh /tmp
-###RUN su ${user} /tmp/install_rls.sh
-###
+COPY build_scripts/install_npm.sh /tmp
+RUN /tmp/install_npm.sh
+
+COPY build_scripts/install_javascript_typescript_langserver.sh /tmp
+RUN /tmp/install_javascript_typescript_langserver.sh
+
+COPY build_scripts/install_typescript_language_server.sh /tmp
+RUN /tmp/install_typescript_language_server.sh
+
 COPY build_scripts/install_neovim.sh /tmp
 RUN su ${user} -c /tmp/install_neovim.sh
 
@@ -28,8 +34,8 @@ RUN su ${user} -c "echo so ~/myVimrc | tee -a ~/.config/nvim/init.vim"
 COPY build_scripts/install_neovim_plugins.sh /tmp
 RUN su ${user} -c /tmp/install_neovim_plugins.sh
 
-COPY build_scripts/install_vscode.sh /tmp
-RUN /tmp/install_vscode.sh
+### COPY build_scripts/install_vscode.sh /tmp
+### RUN /tmp/install_vscode.sh
 
 COPY build_scripts/myBashrc /tmp
 RUN su ${user} -c 'cp /tmp/myBashrc ~'
