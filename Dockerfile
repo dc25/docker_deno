@@ -18,8 +18,8 @@ RUN /tmp/install_npm.sh
 COPY build_scripts/install_javascript_typescript_langserver.sh /tmp
 RUN /tmp/install_javascript_typescript_langserver.sh
 
-COPY build_scripts/install_typescript_language_server.sh /tmp
-RUN /tmp/install_typescript_language_server.sh
+COPY build_scripts/install_javascript_typescript_langserver.sh /tmp
+RUN /tmp/install_javascript_typescript_langserver.sh
 
 COPY build_scripts/install_neovim.sh /tmp
 RUN su ${user} -c /tmp/install_neovim.sh
