@@ -8,16 +8,10 @@ Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
-" ####" from https://github.com/prabirshrestha/vim-lsp
-" ####if executable('typescript-language-server')
-" ####    au User lsp_setup call lsp#register_server({
-" ####        \ 'name': 'typescript-language-server',
-" ####	\ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio --tsserver-log-file /tmp/ts-logs.txt']}, 
-" ####        \ 'whitelist': ['typescript'],
-" ####        \ })
-" ####endif
-" ####
-
+" from https://github.com/sourcegraph/javascript-typescript-langserver
+" also tried out https://github.com/theia-ide/typescript-language-server
+" but settled on this one (don't remember exactly why).
+"
 if executable('javascript-typescript-stdio')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'javascript-typescript-stdio',
