@@ -4,15 +4,25 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
-" from https://github.com/prabirshrestha/vim-lsp
-if executable('javascript-typescript-langserver')
+" ####" from https://github.com/prabirshrestha/vim-lsp
+" ####if executable('typescript-language-server')
+" ####    au User lsp_setup call lsp#register_server({
+" ####        \ 'name': 'typescript-language-server',
+" ####	\ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio --tsserver-log-file /tmp/ts-logs.txt']}, 
+" ####        \ 'whitelist': ['typescript'],
+" ####        \ })
+" ####endif
+" ####
+
+if executable('javascript-typescript-stdio')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'javascript-typescript-langserver',
-	\ 'cmd': {server_info->[&shell, &shellcmdflag, 'javascript-typescript-langserver']}, 
-        \ 'whitelist': ['typescript'],
+        \ 'name': 'javascript-typescript-stdio',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'javascript-typescript-stdio']}, 
+        \ 'whitelist': ['typescript', 'javascript'],
         \ })
 endif
 
